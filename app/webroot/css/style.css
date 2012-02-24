@@ -1,0 +1,542 @@
+/**
+ * Ballista CSS
+ *
+ * Styling for Ballista
+ *
+ * Ballista : Code Deployment System
+ * Copyright 2011-2012, Baheerathan Vykundanathan <thamba@allerinternett.no>
+ *
+ * This file is part of Ballista.
+ * 
+ * Ballista is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * Ballista is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with Ballista.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * @copyright     Copyright 2011-2012, Baheerathan Vykundanathan <thamba@allerinternett.no>
+ * @package       Ballista
+ * @license       GPL v3 (http://www.gnu.org/licenses/gpl.txt)
+ */
+ 
+h1, h2, h3{
+  color: #003d4c;
+}
+
+h1{
+  font-size: 20px;
+}
+	
+h3{
+  font-size: 18px;
+}
+	
+fieldset legend{
+  color: #003d4c;
+  font-size: 100%;
+}
+
+a:hover{
+  color: #B5D8E0;  
+}
+
+#header{
+  height: 20px;
+  padding: 20px 20px 0px 20px;
+}
+	
+#menu img{
+  position: relative;
+  top: 2px;
+}
+
+#header h1{
+  width: 300px;
+  float: left;
+  margin-bottom: 6px;
+}
+	
+#header h1 a:hover{
+	text-decoration: none;
+}
+	
+#content{
+  padding: 10px 10px 40px 10px;
+}
+	
+.info{
+  float: right;
+  text-align: right;
+  width: 300px;
+}
+	
+.info img{
+  position: relative;
+  top: 2px;
+  margin-right: 4px;
+}
+
+.info .divide{
+  margin: 0px 20px;
+}
+	
+.info a{
+  color: #FFF;
+  text-decoration: none;
+}
+
+#loginBox{
+  width: 500px;
+  margin: 60px auto;
+  border: 1px solid #CCC;
+  padding: 20px;
+  -webkit-border-radius:8px;
+  -moz-border-radius:8px;
+  border-radius:8px;
+}
+	
+div.form, div.index, div.view{
+  border-left: 0px;
+  width: 77%;
+  padding: 10px;
+}
+
+div.actions{
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 18%;
+}
+	
+div.related{
+  float: right;
+  width: 80%;
+  clear: none;
+  margin-top: 40px;
+}
+
+table th{
+  color: #FFF;
+  background-color: #003D4C;
+  border: 0px;
+}	
+
+table th a{
+  color: #FFF;
+  padding: 0px;
+}
+
+table .altrow td{
+  background-color: #FFF;
+}
+
+td.actions{
+  text-align: left;
+}
+
+td.buttons{
+  text-align: right;
+}
+	
+td.buttons a{
+  margin-right: 30px;
+}
+	
+form .submit input[type=submit] {
+  background:#62af56;
+  background: -webkit-gradient(linear, left top, left bottom, from(#a8ea9c), to(#62af56));
+  background-image: -moz-linear-gradient(top, #a8ea9c, #62af56);
+}
+
+form .submit input[type=submit]:hover {
+  background:#4ca83d;
+  background: -webkit-gradient(linear, left top, left bottom, from(#85e573), to(#4ca83d));
+  background-image: -moz-linear-gradient(top, #85e573, #4ca83d);
+}
+
+input[type=submit],
+div.actions ul li a,
+td.actions a,
+#loginBox,
+.actionBox {
+  background:#e2d6a1;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f1f1d4), to(#e2d6a1));
+  background-image: -moz-linear-gradient(top, #f1f1d4, #e2d6a1);
+}
+
+input[type=submit]:hover,
+div.actions ul li a:hover,
+td.actions a:hover {
+  background: #f7f7e1;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f7f7e1), to(#f7f7e1));
+  text-decoration: none;
+}
+
+input, textarea, select{
+  border: 1px solid #AAA;
+  padding: 8px;
+  background: #d4d4d4;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#eeeeee));
+  background-image: -moz-linear-gradient(top, #ffffff, #eeeeee);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-shadow: 0px 1px 1px #FFFFFF;
+  -moz-box-shadow: inset 0px 8px 2px #aaa;
+  -webkit-box-shadow: inset 0px 8px 2px #aaa;
+  box-shadow: inset 2px 2px 2px #aaa;
+}
+
+#ProjectAddForm fieldset fieldset,
+#ProjectEditForm fieldset fieldset{
+  background-color: #EEE;
+}
+
+#flashHolder{
+  background-color: #003d4c;
+  height: 26px;
+}
+	
+#flashMessage{
+  display: block;
+  font-size: 100%;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
+.highlight{
+  border: 1px solid #003D4C;
+}
+
+#instancesTable{
+  padding: 0px;
+  width: auto;
+}
+	
+#instancesTable .commitInfo{
+  font-size: 12px;
+  filter: alpha(opacity=20);
+  opacity: 0.2;
+  padding: 12px 0px 0px 0px;
+}
+
+.commitInfo div{
+  margin: 0px;
+  padding: 0px;
+}
+
+.commitInfo .logitem{
+  background-color: #DEEBF2;
+  margin-bottom: 14px;
+  border: 1px solid #B8D1E0;
+}
+
+.commitInfo .title{
+  font-size: 13px;
+  font-weight: bold;
+  padding: 1px 6px;
+  background-color: #B8D1E0;
+}
+
+.commitInfo .old{
+  background-color: #EEE;
+  border: 1px solid #CCC;
+}
+
+.commitInfo .old .title{
+  background-color: #DDD;
+  color: #666;
+}
+
+.commitInfo .title .radio{
+  margin-top: 2px;  
+}
+
+.commitInfo .title .version, 
+.commitInfo .title .deploy{
+  font-size: 10px;
+  float: right;
+  margin-top: 3px;  
+}
+
+.commitInfo .infoBox{
+  height: 27px;
+}
+
+.commitInfo .hash{
+  display: none;
+}
+
+.commitInfo .commit,
+.commitInfo .author,
+.commitInfo .date,
+.commitInfo .changelist{
+  color: #AAA;
+  float: left;
+  clear: none;
+  margin: 4px 6px 0px 6px;
+}
+
+.commitInfo .changelist{
+  float: right;
+}
+	
+.commitInfo .clear{
+  padding-bottom: 8px;
+  margin-bottom: 8px;  
+}
+	
+.commitInfo .infobox{
+  margin: 20px 16px;
+}
+
+#instancesTable .timefield{
+  width: 200px;
+  font-size: 12px;
+  padding: 3px;
+  width: 125px;
+}
+
+#instancesTable .branchfield{
+  width: 133px;
+}
+
+#instancesTable .text{
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+	
+#instancesTable .box1{
+  margin-right: 20px;
+}
+	
+#instancesTable .cellspace{
+  width: 6px;
+  border-bottom: 0px;
+}
+		
+.instanceHolder{
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  width: 450px;
+}
+	
+.actionBox{
+  border: 1px solid #ccc;
+}
+	
+.actionBox .text{
+  float: left;
+  margin-right: 30px;
+  clear: none;
+}
+
+.actionBox .text label{
+  float: left;
+  margin-right: 8px;
+}
+	
+.actionBox .text input{
+  padding: 5px;
+  font-size: 18px;
+  width: 600px;
+  font-style: italic;
+}
+	
+.actionBox .textarea{
+  width: 600px;
+}
+  	
+.actionBox .checkbox{
+  float: left;
+  margin: 0px 30px 0px 0px;
+}
+	
+.actionBox .submit{
+  float: left;
+  clear: none;
+  margin-top: 0px;
+}
+
+.mailoption{
+  margin: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.mailoption label{
+  display: inline;
+}
+
+.serverBox{
+  background-color: #ddd;
+  height: 54px;
+  font-size: 14px;
+  margin: 0px;
+}
+
+.serverBox select{
+  font-size: 12px;
+  padding: 1px;
+}
+
+#mailBox{
+  display: none;
+  padding: 0px;
+}
+
+#mailBox .text, #mailBox .textarea{
+  clear: both;
+  margin: 8px 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}	
+
+#mailBox input, #mailBox textarea{
+  font-size: 90%;
+}
+
+#mailBox textarea{
+  height: 70px;
+}
+
+#mailBox label{
+  float: none;
+  font-size: 90%;
+}
+
+#instancesTable .checkbox{
+  float: left;
+  clear: none;
+}
+	
+#instancesTable .text{
+  float: right;
+  clear: right;
+  margin: 6px 0px;
+  padding: 0px;
+}
+
+#instancesTable .select{
+  clear: none;
+  margin: 0px;
+}
+
+#instancesTable .text label{
+  float: left;
+  margin-right: 8px;
+}
+	
+.deployHistory{
+  font-size: 90%;
+  margin-top: 40px !important;
+}
+
+.deployHistory table{
+  display: none;  
+  background-color: #DDD;
+}
+
+.deployHistory table tr td, .deployHistory table tr th{
+  padding: 2px 4px;  
+}
+
+.deployHistory table th{
+  background-color: #DDD;
+  color: #444;
+}
+  
+.deployHistory .historyTitle{
+  color: #444;
+  font-size: 12px;
+  margin: 0px 2px;
+  padding: 2px 4px;
+  cursor: pointer;  
+}
+
+.deployHistory div{
+  margin: 0px;
+  padding: 0px;
+}
+
+.morelink{
+  clear: both;
+  margin-top: 8px;
+}
+
+#InstanceExecuteForm input[type="checkbox"]{
+  float: none;
+}
+	
+/* css for lightbox */
+.blackOverlay{
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index:1001;
+  -moz-opacity: 0.7;
+  opacity:.70;
+  filter: alpha(opacity=70);
+}
+ 
+.lightBox {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  width: 532px;
+  z-index:1002;
+  -webkit-border-radius:8px;
+  -moz-border-radius:8px;
+  border-radius:8px;
+  background-color: #FFF;
+  padding: 18px;
+}
+
+.logWindow{
+  cursor: pointer;
+}
+
+.closeButton{
+  position: absolute;
+  top: 2px;
+  left: 550px;
+  cursor: pointer;
+}
+
+.lightBox .text{
+  background-color: #000;
+  color: #FFF;
+  padding: 30px;
+  height: 200px;
+  overflow: auto;
+}
+
+#license{
+  text-align: center;  
+  padding: 10px;
+  font-size: 10px;
+}
+
+#license a{
+  color: #FFF;
+  text-decoration: none;
+}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
+.ui-timepicker-div dl{ text-align: left; }
+.ui-timepicker-div dl dt{ height: 25px; }
+.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
