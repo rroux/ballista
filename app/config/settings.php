@@ -46,13 +46,14 @@
 
 /** 
  * The password for the user above to login to the servers.
+ * You must use a password or use the private key option below.
  * This can be left empty if the below given privateKey option is being used.
  */  
  Configure::write('Ballista.remotePass', '');
 
 /** 
  * For authentication without password, to do key verification we require the private key of the remoteUser.
- * Copy the user's ~/.ssh/id_rsa file into this config folder and specify the filename below.
+ * Specify the full path or copy the user's ~/.ssh/id_rsa file into this config folder and specify the filename below.
  * Make sure the file has read permissions.
  */  
  Configure::write('Ballista.privateKey', '');
@@ -60,7 +61,7 @@
 /**
  * The normal access protocol of the central repository server where all the Git repositories reside.
  * Use hostname or IP along with whatever transport protocol you use. 
- * Ex: ssh://myrepo.com/ or git@myrepo.com
+ * Ex: ssh://myrepo.com/ or git://myrepo.com/
  * To clone projects with this protocol, Ballista will use the "repository path", Eg: git clone git@repository.com:path_to_repository 
  * Leave empty if you use gitolite or if your projects are hosted on github.
  */  
@@ -80,7 +81,7 @@
  * Specify your Github account name here.
  * For example, if your project is at https://github.com/somename/project, then 'somename' would be your account name.
  */  
- Configure::write('Ballista.githubAccount', '');
+ //Configure::write('Ballista.githubAccount', '');
  
 /**
  * This is the API token to your account if you have a private github account

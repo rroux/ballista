@@ -55,10 +55,10 @@ class HooksTask extends Shell {
       $params = array($server, $project, $host, $destination, $commit, $branch, $user);
       
       // Start output
-      $output = "\n\nRunning $action hooks...\n";
+      $output = "\n\nRunning deploy hooks...\n";
 
       // Parse the deploy hook file
-      $hooks = parse_ini_file(ROOT . DS . APP_DIR . DS . 'config' . DS . 'hooks' . DS . $action . '.ini', true);
+      $hooks = parse_ini_file(ROOT . DS . APP_DIR . DS . 'config/hooks/Deploy.ini', true);
       
       // Run global hook 
       $output .= $this->_runhook($ssh, $holders, $params, $hooks['global']['default']);
