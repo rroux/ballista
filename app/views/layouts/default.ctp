@@ -21,7 +21,13 @@
 <body>
   <div id="container">
     <div id="header">
-      <h1><?php echo $this->Html->link('Ballista - Code Deployment', array('controller' => 'projects', 'action' => 'index')) ?></h1>
+      <?php 
+        echo $this->Html->link(
+          $this->Html->image('ballista.jpg', array('class' => 'logo')), 
+            array('controller' => 'projects', 'action' => 'index'),
+            array('escape' => false)
+          ); 
+        ?>
       <div class="info">
         <?php 
           echo $this->Html->link(
