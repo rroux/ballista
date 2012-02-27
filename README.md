@@ -1,10 +1,10 @@
 Ballista - Code Deployment System
----------------------------------
+=================================
 
 Ballista is a Code Deployment system that is designed for environments that have multiple developers working on multiple projects that need to be deployed to multiple servers. It is primarily designed to work with Git.
 
 Some of the features of Ballista are:
-
+-------------------------------------
 - Graphical user interface for performing code deployment.
 - Supports working with Git code that is hosted in-house or hosted on Github.
 - Easy click deploy to multiple servers.
