@@ -206,14 +206,14 @@ input, textarea, select{
 
 #flashHolder{
   background-color: #003d4c;
-  height: 25px;
+  height: 20px;
 }
   
 #flashMessage{
   display: block;
   font-size: 100%;
   margin: 0px;
-  padding: 4px;
+  padding: 0px;
   text-align: center;
 }
 
