@@ -5,7 +5,7 @@
  * Model class for server table
  *
  * Ballista : Code Deployment System
- * Copyright 2011-2012, Baheerathan Vykundanathan <thamba@allerinternett.no>
+ * Copyright 2011-2012, Aller Internett AS <it@allerinternett.no>
  *
  * This file is part of Ballista.
  * 
@@ -22,35 +22,36 @@
  * You should have received a copy of the GNU General Public License
  * along with Ballista.  If not, see <http://www.gnu.org/licenses/>.
  * 
- * @copyright     Copyright 2011-2012, Baheerathan Vykundanathan <thamba@allerinternett.no>
+ * @copyright     Copyright 2011-2012, Aller Internett AS <it@allerinternett.no>
+ * @author        Baheerathan Vykundanathan <thamba@allerinternett.no>
  * @package       Ballista
  * @license       GPL v3 (http://www.gnu.org/licenses/gpl.txt)
  */
 
 class Server extends AppModel {
-	var $name = 'Server';
-	var $displayField = 'server';
-	var $validate = array(
-		'server' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'hostname' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+  var $name = 'Server';
+  var $displayField = 'server';
+  var $validate = array(
+    'server' => array(
+      'notempty' => array(
+        'rule' => array('notempty'),
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+      ),
+    ),
+    'hostname' => array(
+      'notempty' => array(
+        'rule' => array('notempty'),
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+      ),
+    ),
     'branches' => array(
       'boolean' => array(
         'rule' => array('boolean'),
@@ -61,10 +62,10 @@ class Server extends AppModel {
         //'on' => 'create', // Limit validation to 'create' or 'update' operations
       ),
     ),
-	);
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
+  );
+  //The Associations below have been created with all possible keys, those that are not needed can be removed
 
-	var $hasAndBelongsToMany = array(
+  var $hasAndBelongsToMany = array(
     'Project' => array(
       'className' => 'Project',
       'joinTable' => 'instances',

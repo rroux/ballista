@@ -5,7 +5,7 @@
  * Use it to configure the behavior of Ballista
  * 
  * Ballista : Code Deployment System
- * Copyright 2011-2012, Baheerathan Vykundanathan <thamba@allerinternett.no>
+ * Copyright 2011-2012, Aller Internett AS <it@allerinternett.no>
  *
  * This file is part of Ballista.
  * 
@@ -22,7 +22,8 @@
  * You should have received a copy of the GNU General Public License
  * along with Ballista.  If not, see <http://www.gnu.org/licenses/>.
  * 
- * @copyright     Copyright 2011-2012, Baheerathan Vykundanathan <thamba@allerinternett.no>
+ * @copyright     Copyright 2011-2012, Aller Internett AS <it@allerinternett.no>
+ * @author        Baheerathan Vykundanathan <thamba@allerinternett.no>
  * @package       Ballista
  * @license       GPL v3 (http://www.gnu.org/licenses/gpl.txt)
  */ 

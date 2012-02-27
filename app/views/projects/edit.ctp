@@ -1,11 +1,11 @@
 <div class="projects form">
 <?php echo $this->Form->create('Project');?>
-	<fieldset>
- 		<legend><?php __('Edit Project'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('description');
+  <fieldset>
+     <legend><?php __('Edit Project'); ?></legend>
+  <?php
+    echo $this->Form->input('id');
+    echo $this->Form->input('name');
+    echo $this->Form->input('description');
     echo $this->Form->input('host', array('options' => $hosts));
     echo $this->Form->input('path', array('label' => 'Path/URL to the project repository'));
     echo $this->Form->input('active');
@@ -24,9 +24,9 @@
     echo $this->Form->input('message', array('type' => 'textarea', 'label' => 'Notification message'));
     echo '</fieldset>';
 
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit', true));?>
+  ?>
+  </fieldset>
+  <?php echo $this->Form->end(__('Submit', true));?>
 </div>
 
 <?php echo $this->element('actions') ?>

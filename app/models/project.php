@@ -5,7 +5,7 @@
  * Model class for project table
  *
  * Ballista : Code Deployment System
- * Copyright 2011-2012, Baheerathan Vykundanathan <thamba@allerinternett.no>
+ * Copyright 2011-2012, Aller Internett AS <it@allerinternett.no>
  *
  * This file is part of Ballista.
  * 
@@ -22,68 +22,69 @@
  * You should have received a copy of the GNU General Public License
  * along with Ballista.  If not, see <http://www.gnu.org/licenses/>.
  * 
- * @copyright     Copyright 2011-2012, Baheerathan Vykundanathan <thamba@allerinternett.no>
+ * @copyright     Copyright 2011-2012, Aller Internett AS <it@allerinternett.no>
+ * @author        Baheerathan Vykundanathan <thamba@allerinternett.no>
  * @package       Ballista
  * @license       GPL v3 (http://www.gnu.org/licenses/gpl.txt)
  */
 
 class Project extends AppModel {
-	var $name = 'Project';
-	var $displayField = 'name';
-	var $validate = array(
-		'name' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'path' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'active' => array(
-			'boolean' => array(
-				'rule' => array('boolean'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-	);
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
+  var $name = 'Project';
+  var $displayField = 'name';
+  var $validate = array(
+    'name' => array(
+      'notempty' => array(
+        'rule' => array('notempty'),
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+      ),
+    ),
+    'path' => array(
+      'notempty' => array(
+        'rule' => array('notempty'),
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+      ),
+    ),
+    'active' => array(
+      'boolean' => array(
+        'rule' => array('boolean'),
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+      ),
+    ),
+  );
+  //The Associations below have been created with all possible keys, those that are not needed can be removed
 
-	var $hasAndBelongsToMany = array(
-		'Server' => array(
-			'className' => 'Server',
-			'joinTable' => 'instances',
-			'foreignKey' => 'project_id',
-			'associationForeignKey' => 'server_id',
-			'unique' => true,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-			'deleteQuery' => '',
-			'insertQuery' => ''
-		)
-	);
+  var $hasAndBelongsToMany = array(
+    'Server' => array(
+      'className' => 'Server',
+      'joinTable' => 'instances',
+      'foreignKey' => 'project_id',
+      'associationForeignKey' => 'server_id',
+      'unique' => true,
+      'conditions' => '',
+      'fields' => '',
+      'order' => '',
+      'limit' => '',
+      'offset' => '',
+      'finderQuery' => '',
+      'deleteQuery' => '',
+      'insertQuery' => ''
+    )
+  );
 
-	// The types of hosting for Git repositories. 
-	// Ballista supports local hosting and github hosting at the moment.
-	var $hosts = array('Local' => 'Local', 'Github' => 'Github');
+  // The types of hosting for Git repositories. 
+  // Ballista supports local hosting and github hosting at the moment.
+  var $hosts = array('Local' => 'Local', 'Github' => 'Github');
 }
 ?>

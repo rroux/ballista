@@ -1,5 +1,5 @@
 <div class="deployHistory">
-<?php
+  <?php
   if ($historylog) {
     echo '<div class="historyTitle">' . $this->Html->image('toggle_plus.png', array('id' => 'toggle', 'align' => 'left')) . 'Deployment history of ' . $branch . ' branch &#187;</div>';
     echo '<table id="historyTable' . ($serverkey + 1) . '">';

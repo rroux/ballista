@@ -5,7 +5,7 @@
  * Model class for notification table
  *
  * Ballista : Code Deployment System
- * Copyright 2011-2012, Baheerathan Vykundanathan <thamba@allerinternett.no>
+ * Copyright 2011-2012, Aller Internett AS <it@allerinternett.no>
  *
  * This file is part of Ballista.
  * 
@@ -22,45 +22,46 @@
  * You should have received a copy of the GNU General Public License
  * along with Ballista.  If not, see <http://www.gnu.org/licenses/>.
  * 
- * @copyright     Copyright 2011-2012, Baheerathan Vykundanathan <thamba@allerinternett.no>
+ * @copyright     Copyright 2011-2012, Aller Internett AS <it@allerinternett.no>
+ * @author        Baheerathan Vykundanathan <thamba@allerinternett.no>
  * @package       Ballista
  * @license       GPL v3 (http://www.gnu.org/licenses/gpl.txt)
  */
 
 class Notification extends AppModel {
-	var $name = 'Notification';
-	var $validate = array(
-		'log_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'notify' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-	);
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
+  var $name = 'Notification';
+  var $validate = array(
+    'log_id' => array(
+      'numeric' => array(
+        'rule' => array('numeric'),
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+      ),
+    ),
+    'notify' => array(
+      'notempty' => array(
+        'rule' => array('notempty'),
+        //'message' => 'Your custom message here',
+        //'allowEmpty' => false,
+        //'required' => false,
+        //'last' => false, // Stop validation after this rule
+        //'on' => 'create', // Limit validation to 'create' or 'update' operations
+      ),
+    ),
+  );
+  //The Associations below have been created with all possible keys, those that are not needed can be removed
 
-	var $belongsTo = array(
-		'Log' => array(
-			'className' => 'Log',
-			'foreignKey' => 'log_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
+  var $belongsTo = array(
+    'Log' => array(
+      'className' => 'Log',
+      'foreignKey' => 'log_id',
+      'conditions' => '',
+      'fields' => '',
+      'order' => ''
+    )
+  );
 }
 ?>

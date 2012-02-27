@@ -5,29 +5,29 @@
 
 <div class="projects index">
   <h2>Projects</h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-		<th><?php echo $this->Paginator->sort('id');?></th>
-		<th><?php echo $this->Paginator->sort('name');?></th>
-		<th><?php echo $this->Paginator->sort('description');?></th>
-		<th><?php echo $this->Paginator->sort('active');?></th>
+  <table cellpadding="0" cellspacing="0">
+  <tr>
+    <th><?php echo $this->Paginator->sort('id');?></th>
+    <th><?php echo $this->Paginator->sort('name');?></th>
+    <th><?php echo $this->Paginator->sort('description');?></th>
+    <th><?php echo $this->Paginator->sort('active');?></th>
     <th>Activity log</th>
     <th>Deploy</th>
     <th>&nbsp;</th>
-</tr>
-	<?php
-	$i = 0;
-	foreach ($projects as $project):
-		$class = null;
-		if ($i++ % 2 == 0) {
-			$class = ' class="altrow"';
-		}
-	?>
-	<tr<?php echo $class;?>>
-		<td><?php echo $project['Project']['id']; ?>&nbsp;</td>
-		<td>
-		<?php 
-		  if ($project['Project']['active'] == 1 && !empty($acl[$project['Project']['id']])) { 
+  </tr>
+  <?php
+    $i = 0;
+    foreach ($projects as $project):
+      $class = null;
+      if ($i++ % 2 == 0) {
+        $class = ' class="altrow"';
+      }
+  ?>
+  <tr<?php echo $class;?>>
+    <td><?php echo $project['Project']['id']; ?>&nbsp;</td>
+    <td>
+    <?php 
+      if ($project['Project']['active'] == 1 && !empty($acl[$project['Project']['id']])) { 
           echo $this->Html->link(
             $project['Project']['name'],
             array('controller' => 'instances', 'action' => 'deploy', $project['Project']['id'], Configure::read('Ballista.master')),
@@ -38,14 +38,14 @@
       }
     ?>&nbsp;
     </td>
-		<td><?php echo $project['Project']['description']; ?>&nbsp;</td>
-	  <?php 
+    <td><?php echo $project['Project']['description']; ?>&nbsp;</td>
+    <?php 
         echo '<td>';
-		    if ($this->Session->read('User.admin') == 1) {
-   		    echo $project['Project']['active'] == 1 ? $this->Html->link($this->Html->image('active.png', array('title' => 'Active')), array('action' => 'status', $project['Project']['id'], $project['Project']['active']), array('escape' => false)) : $this->Html->link($this->Html->image('inactive.png', array('title' => 'Inactive')), array('action' => 'status', $project['Project']['id'], $project['Project']['active']), array('escape' => false));
-		    }else{
-   		    echo $project['Project']['active'] == 1 ? $this->Html->image('active.png', array('title' => 'Active')) : $this->Html->image('inactive.png', array('title' => 'Inactive'));
-		    }
+        if ($this->Session->read('User.admin') == 1) {
+           echo $project['Project']['active'] == 1 ? $this->Html->link($this->Html->image('active.png', array('title' => 'Active')), array('action' => 'status', $project['Project']['id'], $project['Project']['active']), array('escape' => false)) : $this->Html->link($this->Html->image('inactive.png', array('title' => 'Inactive')), array('action' => 'status', $project['Project']['id'], $project['Project']['active']), array('escape' => false));
+        }else{
+           echo $project['Project']['active'] == 1 ? $this->Html->image('active.png', array('title' => 'Active')) : $this->Html->image('inactive.png', array('title' => 'Inactive'));
+        }
         echo '</td>';
 
         echo '<td>';
@@ -57,7 +57,7 @@
         echo '</td>';
 
         if($project['Project']['active'] == 1 && !empty($acl[$project['Project']['id']])){
-  			  echo '<td>';
+          echo '<td>';
           echo $this->Html->link(
             $this->Html->image('deploy.png', array('alt' => 'Deploy', 'title' => 'Deploy')), 
             array('controller' => 'instances', 'action' => 'deploy', $project['Project']['id'], Configure::read('Ballista.master')),
@@ -93,24 +93,25 @@
           );
         }
         echo '</td>';
-		  ?>
-	</tr>
+      ?>
+  </tr>
   <?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-	));
-	?>	
-	</p>
+  </table>
+  <p>
+  <?php
+    echo $this->Paginator->counter(array(
+      'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
+    ));
+  ?>  
+  </p>
 
-	<div class="paging">
-		<?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
-	 | 	<?php echo $this->Paginator->numbers();?>
- |
-		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
-	</div>
+  <div class="paging">
+    <?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
+    | 
+    <?php echo $this->Paginator->numbers();?>
+    | 
+    <?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+  </div>
 </div>
 
 <?php echo $this->element('actions') ?>
