@@ -17,8 +17,7 @@ Some of the features of Ballista are:
   server, and the "Admin" group has permission to deploy to all servers.
 - Timed deploys allow you to set a pre-determined time in the future to deploy your 
   project, and Ballista will deploy it for you.
-- Deploy your Git branches as well. Configure Ballista to allow deploying your 
-  branches to your testing or staging servers.
+- Deploy your Git branches to your testing/staging servers. 
 - Detailed activity log of all deploys performed.
 - Executing hook scripts after performing deploys on server gives you great 
   flexibility to do a variety of things after a deploy.
