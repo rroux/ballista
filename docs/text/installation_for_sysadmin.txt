@@ -1,0 +1,109 @@
+Installing Ballista
+-------------------
+
+1. Prerequisites
+
+    If your Git repositories are hosted in-house, the current version of Ballista requires that Ballista be installed on the same server as the repository.
+    The following packages need to be installed on your server for Ballista to work:
+        Git
+        Apache2 (or any other web server)
+        PHP5
+        PHP5-CLI package
+        SSH
+        MySQL
+        PHP5-MySQL package
+        PHP Curl package is required if you wish to use Github hosted projects
+
+2. Installation
+
+    Make sure you have all the above mentioned packages installed on your system.
+    Install Ballista in a suitable location. For example, under: /var/www/ballista.
+    Make the "ballista/app/tmp" folder writable by apache by giving it suitable write permissions.
+
+3. Database
+
+    Create an empty database in your database server. You can call it anything. Let's say you name it "ballista".
+    Setup a username and password to access the database and grant permissions necessary.
+    The database schema file can be found under ballista/app/models/datasources/ballista.sql
+    Use this schema file to populate your database with a command like: mysql ballista -u user -p pass < ballista.sql
+    Edit the file ballista/app/config/database.php and enter the credentials in the "default" array for Ballista to access the database.
+
+4. Configuration
+
+    Edit the settings file under ballista/app/config/settings.php
+    Go through this file and make changes wherever necessary. This file is well documented.
+    In most cases, only the Ballista.remoteuser, Ballista.remotePass and Ballista.accessProtocol need to be set. Everything else should work fine with their default values.
+    If you have projects on Github that you wish to deploy to your servers, then you need to modify the github settings in this file to add your github account username.
+    To enable the github api to work you also need to edit the bootstrap.php file in the config folder and enable the last couple of lines.
+    If you have a private account on Github, then you also need to add the token in the core.php settings. NOTE: This has not been tested. Please notify the author in case of bugs.
+
+6. Web server
+
+    Setup Apache or your webserver to serve Ballista. This document assumes you have apache.
+    The DocumentRoot should point to /var/www/ballista/app/webroot - (This assumes your ballista is installed under /var/www/ballista)
+    Ballista requires the rewrite module in apache to be enabled. This can be done with a command like "a2enmod rewrite".
+    Ballista has a few .htaccess files which it uses to set the RewriteEngine On and perform redirects. The AllowOverride parameter may therefore be need to be set to "AllowOverride All".
+    Here is a very simple apache host file configuration example:
+
+    <VirtualHost *:80>
+          ServerName ballista.mycompany.com
+          DocumentRoot /var/www/ballista/app/webroot
+          <Directory /var/www/ballista/app/webroot>
+        
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride All
+            Order allow,deny
+            allow from all
+          </Directory>
+          ErrorLog ${APACHE_LOG_DIR}/ballista.error.log
+          LogLevel warn
+          CustomLog ${APACHE_LOG_DIR}/ballista.access.log combined
+        </VirtualHost>
+        
+
+7. Server access
+
+Ballista needs to log into your servers to perform a deploy. It uses the SSH protocol and needs a username and password to login.
+Lets say for example, that you have 3 machines. Your "repository" where your git projects are hosted and where Ballista is installed, and you have a "stage" server, and a "production" server to which you need to deploy your code.
+
+    Ballista needs to have a username/password that has access to the "stage" and "production" servers.
+    Create a user account, for example "deployer" on the repository, stage and production machines.
+    Now generate ssh keys and share the public keys between the servers such that the user "deployer" can log in from stage to repository and from repository to stage without a password. Its important that it works both ways. The same setup between production <=> repository.
+    This is extremely important: The user "deployer" needs to be able to access the repository server without a password from the servers "stage" and "production".
+    This is because when a deploy is performed to a server (eg: stage), Ballista logs into the "stage" server as "deployer" and then performs a git pull to fetch code from the "repository" server.
+    Once you have setup the keys, add this information in the settings.php file. Specify your user "deployer" as the remoteUser.
+    In the password field, you need to give the password for this user on the machines, if however you have setup to access without password, you then need to specify the private key of the user. You can either specify the full path to the key or copy the key into the config folder and specify just the name of the key. Make sure the key file is readable.
+
+8. Configuring Ballista
+
+Once the installation and configuration of Ballista is complete, follow the below points to start configuring ballista and setting it up to work the way you want it to.
+
+    Access your ballista installation via the web and you should automatically be redirected to the login page.
+    Ballista has an admin user which can be used to login using the username:admin and password:1234
+    Once you have logged in, click on the View Users button on the left menu and edit the admin user and change the password.
+    As the first step, you need add groups to your system. Choose Add Group button from the left menu and add as many groups as you require.
+    Now you can start adding users by clicking on Add User from the left menu and enter user information and assign them to one or more groups.
+    The next step would be to add servers to your system by clicking on Add Server from the left menu.
+    The server name can be anything, but the IP or hostname of the server should be resolvable and Ballista should have access to it. Confirm this with your SysAdmin if required.
+    Now you can start adding projects, and the path to the projects on each server.
+    Finally permissions have to be assigned. Here you can choose which roles have access to which servers. This is done by clicking the Manage Permissions button on the left menu.
+    Remember to logout and login if permission changes are made. Ballista caches the permissions and regenerates them on user login.
+    Check the hooks documentation file for how to configure and use hooks if required.
+    Now the system is setup and users can start using Ballista.
+
+9. Cron job for automated deploys
+
+You need to add a cron job on the server where Ballista is installed if you wish to use the automated timed deploy feature in Ballista.
+
+    The frequency of the cron job is your choice. You can either configure it to run every hour if you only wish to deploy on the hour, or run every 5 minutes if you wish to check for deploys more often.
+    The cron job should just have a single line invoking the console script to perform the dispatch:
+
+    /var/www/ballista/cake/console/cake -app /var/www/ballista/app dispatch
+        
+
+10. Troubleshooting
+
+    Turn on the debug parameter in the config/core.php file. Set the debug value to 2. This will print debug messages on all pages and helps to figure out errors if any.
+    A deploy usually takes only a few seconds, but if a deploy goes on for much longer without any response, then something might have gone wrong. Check apache log for information. Server connection problems could be a reason or permission problems. Make sure the access protocol (ssh:// or git://) is specified correctly in the settings.php file.
+    If you are using the git:// protocol, remember to open the port 9418 on your repository server.
+

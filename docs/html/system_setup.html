@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <style type="text/css">
+      body{font-family: arial, sans-serif;}
+      pre{border: 1px solid #000; padding: 20px;}
+    </style>
+  </head>
+  <body>
+    <h2><a name="Ballista-Setup-CoreentitiesinBallista"></a>Core entities in Ballista</h2>
+    
+    <p>Ballista revolves around 4 main entities namely: Project, Server, User and Group.</p>
+    
+    <ul>
+      <li>Project - This is your git project.</li>
+      <li>Server - This is a server to which you wish to deploy your code to.</li>
+      <li>User - A user is a person who has access to the Ballista interface through which he/she can deploy a project to one or more servers.</li>
+      <li>Group - A group consists of many users. A user can belong to multiple groups. Each group can be given access or restricted to deploy/rollback on each server.</li>
+    </ul>
+    
+    
+    <h4><a name="Ballista-Setup-1.Projects"></a>1. Projects</h4>
+    
+    <p>Click on the "Add project" in the left menu to add a new project. Or click on the edit icon to the right of each project to edit it. These are the fields that need to be filled in:</p>
+    <ul>
+      <li>Name - The name of your Git project. Make sure you use the same name as it is in your Git repository.</li>
+      <li>Description - Any short description of your project</li>
+      <li>Host - Choose if the project is hosted locally or on Github.</li>
+    
+      <li>Path to the project repository - This is the local path to the project in your repository or URL to the Github repository. For example: /var/www/git/myapp.git or git@github.com/user/project.git</li>
+      <li>Active - Choose whether or not this project is activated in Ballista. Deactivated projects cannot be deployed or rolled back.</li>
+      <li>Path to project instance on Server - This is the path where the project will be deployed to on the server. For example: /var/www/apps/myapp</li>
+    </ul>
+    
+    
+    <p><b>Active/Inactive projects</b><br/>
+    Clicking on the "green tick" button on the project list display, deactivates a project thereby restricting deploy of that project to any server. Click on the "red stop" button to reactivate the project. This function is available only to the admin user.</p>
+    
+    <p><b>Notifications</b><br/>
+    The settings here will override the global notification settings in the config/settings.php file.<br/>
+    Note that notifications are not automatically sent. A checkbox is displayed on the deploy page which when checked gives you the possibility to send the notification after a deploy.<br/>
+    The subject of the email is configured in config/settings.php file.</p>
+    
+    <ul>
+      <li>Email address - Comma separated email addresses to whom notifications need to be sent. This will override notification email address in the config/settings.php file.</li>
+      <li>Message - The notification message. This will override notification email address in the config/settings.php file.</li>
+    </ul>
+    
+    
+    <h4><a name="Ballista-Setup-2.Servers"></a>2. Servers</h4>
+    <p>A server is a physical/virtual machine with a resolvable hostname or IP address which Ballista can connect to deploy projects. <br/>
+    You can have multiple servers configured with Ballista and you can deploy to all servers with one click or you can choose individual servers for each deploy you perform.</p>
+    
+    <p>Add or edit servers by clicking on the "Add server" button on the left menu.</p>
+    <ul>
+      <li>Server name - Use any name to identify the server. This will be seen by the users of the system when they deploy to the server.</li>
+      <li>IP/hostname - The IP address or hostname of the server.</li>
+    
+    </ul>
+    
+    
+    <h4><a name="Ballista-Setup-3.Groups"></a>3. Groups</h4>
+    <p>A group is a categorization of users. This helps to categorize multiple users into different groups. Each group can be assigned permissions to each of your servers. </p>
+    
+    <p>Add or edit groups by clicking on the "Add group" button on the left menu.</p>
+    <ul>
+      <li>Group - Name of the group.</li>
+    </ul>
+    
+    
+    <p><b>Example scenarios</b></p>
+    <ul>
+      <li>You setup 2 servers - "Staging" and "Production"</li>
+      <li>You then create 2 groups - "Developers" and "Release Managers"</li>
+      <li>Give the "Developers" group permission to deploy to the "Staging" server while, the "Release Managers" group is given permission to deploy to "Staging" and "Production" servers.</li>
+    </ul>
+    
+    
+    <h4><a name="Ballista-Setup-4.Users"></a>4. Users</h4>
+    
+    <p>Users are all the people who have access to the Ballista system to use it to deploy projects. <br/>
+    Users have to be assigned to one or more groups as it is the group that determines permission to deploy to the servers.</p>
+    
+    <p>Add or edit users by clicking on the "Add user" button on the left menu.</p>
+    <ul>
+      <li>Username - Username of the user. This must be unique and this is what the user uses to log into the system</li>
+      <li>Password - Password for the user.</li>
+      <li>Firstname - Firstname of the user.</li>
+    
+      <li>Lastname - Lastname of the user.</li>
+      <li>Email - Email address of the user.</li>
+      <li>Active - Whether or not he has access to the system.</li>
+      <li>Group - Groups to which he belongs.</li>
+    </ul>
+    
+    
+    <p><b>Active/Inactive users</b><br/>
+    
+    Clicking on the "green tick" button on the user list display, deactivates a user thereby restricting him from logging into Ballista. Click on the "red stop" icon to reactivate the user. This function is available only to the admin user.</p>
+    
+    <h4><a name="Ballista-Setup-5.Managepermissions"></a>5. Manage permissions</h4>
+    <p>Permissions can be managed under this section. This is a display of all the projects and the servers defined in the system. </p>
+    
+    <p>Add or edit a permission by clicking on the "yellow pencil" icon in the server column and project row.</p>
+    <ul>
+      <li>Project - Name of the project to which this permission is being given.</li>
+      <li>Server - Name of the server to which this permission is being given.</li>
+    
+      <li>Group - Name of the group which is being given access to deploy the project to that server.</li>
+    </ul>
+    
+    
+    <p>NOTE: A user needs to log out and log back in for his/her permissions to take effect.</p>
+  </body>
+</html>

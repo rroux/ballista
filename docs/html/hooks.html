@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <style type="text/css">
+      body{font-family: arial, sans-serif;}
+      pre{border: 1px solid #000; padding: 20px;}
+    </style>
+  </head>
+  <body>
+    
+    <h2><a name="Ballista-Hooks-Hooks"></a>Hooks</h2>
+    <p>
+      Ballista executes hook scripts to which you can add custom commands that will be run on the server after a deploy is performed.
+    </p>
+    <h4><a name="Ballista-Hooks-HooksConfiguration"></a>Hooks Configuration</h4>
+    <p>
+      The hooks configuration uses the ini file syntax. You can add shell commands here that will be run by the Ballista hooks when deploys are performed. These commands will be run on the server after the action is completed. Below you will find a sample configuration example and further down the explanation of the syntax.
+    </p>
+    <h6><a name="Ballista-Hooks-Availableparameters"></a>Available parameters</h6>
+    <p>
+      The following variables are available for use in the hook commands.
+    </p>
+    <div class='table-wrap'>
+      <table class='confluenceTable'>
+        <tbody>
+          <tr>
+            <td class='confluenceTd'>{$server} </td>
+            <td class='confluenceTd'> Name of the server where code is being deployed/rolledback</td>
+          </tr>
+          <tr>
+            <td class='confluenceTd'>{$project} </td>
+            <td class='confluenceTd'> Name of the project that is being deployed/rolledback</td>
+          </tr>
+          <tr>
+            <td class='confluenceTd'>{$host} </td>
+            <td class='confluenceTd'> Name of the host. This could either be 'Local' or 'Github'</td>
+          </tr>
+          <tr>
+            <td class='confluenceTd'>{$destination} </td>
+            <td class='confluenceTd'> Path on the server where project is deployed</td>
+          </tr>
+          <tr>
+            <td class='confluenceTd'>{$commit} </td>
+            <td class='confluenceTd'> Last commit hash</td>
+          </tr>
+          <tr>
+            <td class='confluenceTd'>{$branch} </td>
+            <td class='confluenceTd'> Name of the git branch on which the action is performed </td>
+          </tr>
+          <tr>
+            <td class='confluenceTd'>{$user} </td>
+            <td class='confluenceTd'> Username of the user who performed the deploy/rollback</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h6><a name="Ballista-Hooks-ExampleconfigurationthatcanbeaddedintheDeploy.inifile"></a>Example configuration that can be added in the Deploy.ini file</h6>
+    <div class="preformatted panel" style="border-width: 1px;">
+      <div class="preformattedContent panelContent">
+        <pre>
+; The global section whose hooks will be run on all deploys on all servers
+[global] 
+default = "
+  cd {$destination}
+  echo 'Deploy success: {$commit}' &gt; /tmp/lastcommit.txt;
+  git log -1 &gt;&gt; /tmp/lastcommit.txt;
+  rm -f cache/*;
+"
+
+; The server sections where hooks will be called only when an action is performed on this server
+; The server name here should match the server name defined in Ballista
+[production]
+
+; Every server section should have a default command that will be executed whenever a deploy is 
+; performed on this server irrespective of which project it was. 
+default = "
+  commands go here
+"
+
+; If hook commands are required per project, then define them in this manner
+; where myapp is the project name, and the default command will run irrespective
+; of the branch that was deployed
+myapp[default] = "
+  commands go here
+"
+
+; If hook commands are required per branch of project, then follow this example
+; where myapp is the project name and master is the branch name.
+myapp[master] = "
+  commands go here
+" 
+        </pre>
+      </div>
+    </div>
+
+  </body>
+</html>

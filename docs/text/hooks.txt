@@ -1,0 +1,54 @@
+Hooks
+-----
+
+Ballista executes hook scripts to which you can add custom commands that will be run on the server after a deploy is performed.
+Hooks Configuration
+
+The hooks configuration uses the ini file syntax. You can add shell commands here that will be run by the Ballista hooks when deploys are performed. These commands will be run on the server after the action is completed. Below you will find a sample configuration example and further down the explanation of the syntax.
+Available parameters
+
+The following variables are available for use in the hook commands.
+{$server}   Name of the server where code is being deployed/rolledback
+{$project}  Name of the project that is being deployed/rolledback
+{$host}   Name of the host. This could either be 'Local' or 'Github'
+{$destination}  Path on the server where project is deployed
+{$commit}   Last commit hash
+{$branch}   Name of the git branch on which the action is performed
+{$user}   Username of the user who performed the deploy/rollback
+
+Example configuration that can be added in the Deploy.ini file
+--------------------------------------------------------------
+
+; The global section whose hooks will be run on all deploys on all servers
+[global] 
+default = "
+  cd {$destination}
+  echo 'Deploy success: {$commit}' > /tmp/lastcommit.txt;
+  git log -1 >> /tmp/lastcommit.txt;
+  rm -f cache/*;
+"
+
+; The server sections where hooks will be called only when an action is performed on this server
+; The server name here should match the server name defined in Ballista
+[production]
+
+; Every server section should have a default command that will be executed whenever a deploy is 
+; performed on this server irrespective of which project it was. 
+default = "
+  commands go here
+"
+
+; If hook commands are required per project, then define them in this manner
+; where myapp is the project name, and the default command will run irrespective
+; of the branch that was deployed
+myapp[default] = "
+  commands go here
+"
+
+; If hook commands are required per branch of project, then follow this example
+; where myapp is the project name and master is the branch name.
+myapp[master] = "
+  commands go here
+" 
+        
+

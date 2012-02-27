@@ -1,0 +1,84 @@
+Core entities in Ballista
+-------------------------
+
+Ballista revolves around 4 main entities namely: Project, Server, User and Group.
+
+    Project - This is your git project.
+    Server - This is a server to which you wish to deploy your code to.
+    User - A user is a person who has access to the Ballista interface through which he/she can deploy a project to one or more servers.
+    Group - A group consists of many users. A user can belong to multiple groups. Each group can be given access or restricted to deploy/rollback on each server.
+
+1. Projects
+
+Click on the "Add project" in the left menu to add a new project. Or click on the edit icon to the right of each project to edit it. These are the fields that need to be filled in:
+
+    Name - The name of your Git project. Make sure you use the same name as it is in your Git repository.
+    Description - Any short description of your project
+    Host - Choose if the project is hosted locally or on Github.
+    Path to the project repository - This is the local path to the project in your repository or URL to the Github repository. For example: /var/www/git/myapp.git or git@github.com/user/project.git
+    Active - Choose whether or not this project is activated in Ballista. Deactivated projects cannot be deployed or rolled back.
+    Path to project instance on Server - This is the path where the project will be deployed to on the server. For example: /var/www/apps/myapp
+
+Active/Inactive projects
+Clicking on the "green tick" button on the project list display, deactivates a project thereby restricting deploy of that project to any server. Click on the "red stop" button to reactivate the project. This function is available only to the admin user.
+
+Notifications
+The settings here will override the global notification settings in the config/settings.php file.
+Note that notifications are not automatically sent. A checkbox is displayed on the deploy page which when checked gives you the possibility to send the notification after a deploy.
+The subject of the email is configured in config/settings.php file.
+
+    Email address - Comma separated email addresses to whom notifications need to be sent. This will override notification email address in the config/settings.php file.
+    Message - The notification message. This will override notification email address in the config/settings.php file.
+
+2. Servers
+
+A server is a physical/virtual machine with a resolvable hostname or IP address which Ballista can connect to deploy projects.
+You can have multiple servers configured with Ballista and you can deploy to all servers with one click or you can choose individual servers for each deploy you perform.
+
+Add or edit servers by clicking on the "Add server" button on the left menu.
+
+    Server name - Use any name to identify the server. This will be seen by the users of the system when they deploy to the server.
+    IP/hostname - The IP address or hostname of the server.
+
+3. Groups
+
+A group is a categorization of users. This helps to categorize multiple users into different groups. Each group can be assigned permissions to each of your servers.
+
+Add or edit groups by clicking on the "Add group" button on the left menu.
+
+    Group - Name of the group.
+
+Example scenarios
+
+    You setup 2 servers - "Staging" and "Production"
+    You then create 2 groups - "Developers" and "Release Managers"
+    Give the "Developers" group permission to deploy to the "Staging" server while, the "Release Managers" group is given permission to deploy to "Staging" and "Production" servers.
+
+4. Users
+
+Users are all the people who have access to the Ballista system to use it to deploy projects.
+Users have to be assigned to one or more groups as it is the group that determines permission to deploy to the servers.
+
+Add or edit users by clicking on the "Add user" button on the left menu.
+
+    Username - Username of the user. This must be unique and this is what the user uses to log into the system
+    Password - Password for the user.
+    Firstname - Firstname of the user.
+    Lastname - Lastname of the user.
+    Email - Email address of the user.
+    Active - Whether or not he has access to the system.
+    Group - Groups to which he belongs.
+
+Active/Inactive users
+Clicking on the "green tick" button on the user list display, deactivates a user thereby restricting him from logging into Ballista. Click on the "red stop" icon to reactivate the user. This function is available only to the admin user.
+5. Manage permissions
+
+Permissions can be managed under this section. This is a display of all the projects and the servers defined in the system.
+
+Add or edit a permission by clicking on the "yellow pencil" icon in the server column and project row.
+
+    Project - Name of the project to which this permission is being given.
+    Server - Name of the server to which this permission is being given.
+    Group - Name of the group which is being given access to deploy the project to that server.
+
+NOTE: A user needs to log out and log back in for his/her permissions to take effect.

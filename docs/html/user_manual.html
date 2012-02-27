@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <style type="text/css">
+      body{font-family: arial, sans-serif;}
+      pre{border: 1px solid #000; padding: 20px;}
+    </style>
+  </head>
+  <body>
+    <h2><a name="Ballista-Usermanual-UsingBallista"></a>Using Ballista</h2>
+    
+    <h4><a name="Ballista-Usermanual-Deployingaproject"></a>Deploying a project</h4>
+    <p>Deploying a project in essence means to move a particular version of your code lying in any branch of your Git repository to a server of your choice. </p>
+    
+    <p>Click on the "View projects" to get a list of all your projects.</p>
+    <ul>
+      <li>To deploy a project, you can either click on the title of the project, or click on the deploy button on the project row.</li>
+      <li>If a project/user does not have permission to be deployed, then the link will not be active and the deploy button will be missing. Try to logout and log back in if you had adjusted permissions recently, or contact the administrator.</li>
+      <li>Once the deploy button is clicked, you will be presented with a page listing all the servers to which this project can be deployed.</li>
+    
+      <li>There is also a checkbox for notification messages. Ticking the checkbox will open up the recipients and message fields so you have the option to enter/edit them before the deploy. This notification will be sent after the deploy is performed.</li>
+      <li>Click the "All servers" checkbox if you want to deploy to all servers. Or else choose the servers that you wish to deploy to.</li>
+      <li>In each server box the list of recent commits are shown. If you would like to see more commits, click on the "Show more commits" button at the bottom. This fetches 5 more commits every time you click it.</li>
+      <li>The list of commits show new undeployed commits in blue color and commits already deployed before in grey color.</li>
+      <li>You can choose which version you wish to deploy. The latest version (top-most) is checked by default.</li>
+      <li>You can also choose any previous versions to deploy which would be a "rollback" of your code.</li>
+    
+      <li>Under each commit list is also a box to show the history of deploys for that branch of the project on that server.</li>
+      <li>On the right side of each box is a pull-down menu where you can choose the branch that you wish to deploy. All projects will display the master branch as default to be deployed. If you have configured your project to deploy branches to this server, then all the branches will also be shown in this list. Note that the branches need to be pushed to the repository for Ballista to find them. Local branches cannot be shown here.</li>
+      <li>The time to deploy is shown in a field under the branches list. Click on this field if you wish to change the time of deploy to a future time/date. (A cron job is required to perform future deploys. Your SysAdmin should have installed this during Ballista installation.)</li>
+      <li>Fill in any deploy comment that you wish in the comment field above. If no comment is written, Ballista will use your latest git commit log message.</li>
+      <li>Click on the green deploy button to deploy your project.</li>
+    </ul>
+    
+    <h4><a name="Ballista-Usermanual-Rollingbackaproject"></a>Rolling back a project</h4>
+    <p>A rollback of your project is simply a deploy of an older version of your project.</p>
+    <ul>
+      <li>Go into the project list and click on the project that you wish to deploy.</li>
+      <li>Choose the version that you wish to deploy. This would be a previously deployed version (shows in grey).</li>
+      <li>Click on the green deploy button.</li>
+    </ul>
+    
+    <h4><a name="Ballista-Usermanual-Activitylog"></a>Activity log</h4>
+    <ul>
+      <li>When you have clicked on the deploy button, you will be taken to the activity log page for that project showing you a history of its deploys and also your current deploy process running.</li>
+      <li>Once your deploy is finished (which should take just a few seconds), you will see a "green tick" symbol if it succeeded or a "red warning" symbol if something failed.</li>
+      <li>Beside this icon is presented a "terminal" icon which will show you the output of your deploy. Click on this icon to see the output of your deploy.</li>
+    </ul> 
+  </body>
+</html>
