@@ -62,13 +62,21 @@ class ProjectsController extends AppController {
    * @return  object  $projects   Projects object
    */
   function index() {
-    $allowed_projects = array_keys($this->Session->read('User.permissions'));
     $this->Project->recursive = 0;
-    $this->paginate = array(
-      'conditions' => array('Project.id' => $allowed_projects), 
-      'order' => array('Project.name' => 'asc'), 
-      'limit' => 100
-    );
+    // If admin user show all projects, else check for permissions
+    if ($this->Session->read('User.admin') == 1) {
+      $this->paginate = array(
+        'order' => array('Project.name' => 'asc'), 
+        'limit' => 100
+      );
+    } else {
+      $allowed_projects = array_keys($this->Session->read('User.permissions'));
+      $this->paginate = array(
+        'conditions' => array('Project.id' => $allowed_projects), 
+        'order' => array('Project.name' => 'asc'), 
+        'limit' => 100
+      );
+    }
     $this->set('projects', $this->paginate());
   }
 
