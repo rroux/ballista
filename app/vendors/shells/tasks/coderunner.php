@@ -44,7 +44,7 @@ class CoderunnerTask extends Shell {
    *
    * @return  string  $output       Output from git command
    */
-  function execute($ssh = null, $project = null, $host = null, $destination = null, $path = null, $commit = 'HEAD', $branch = null) {
+  function execute($ssh = null, $project = null, $host = null, $destination = null, $path = null, $commit = null, $branch = null) {
     if (!empty($destination)) {
       $output = "Performing deploy... \n";
 
@@ -70,8 +70,8 @@ class CoderunnerTask extends Shell {
         }
 
       } else {
-        // Path found, so project already exists. Just git pull.
-        $output .= $ssh->exec("cd " . $destination . "; git fetch; git reset --hard origin/" . $branch);
+        // Path found, so project already exists. Just fetch and set to desired version.
+        $output .= $ssh->exec("cd " . $destination . "; git fetch; git reset --hard " . $commit);
       }
 
       return $output;
