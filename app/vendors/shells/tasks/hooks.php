@@ -51,9 +51,12 @@ class HooksTask extends Shell {
   function execute($ssh = null, $server = null, $project = null, $host = null, $destination = null, $path = null, $commit = 'HEAD', $branch = null, $user = null) {
     if (!empty($destination)) {
 
+      // Get current timestamp
+      $timestamp = date('YmdHis');
+
       // Placeholders and their respective parameters that can be substituted in the hook commands
-      $holders = array('{$server}', '{$project}', '{host}', '{$destination}', '{$commit}', '{$branch}', '{$user}');
-      $params = array($server, $project, $host, $destination, $commit, $branch, $user);
+      $holders = array('{$server}', '{$project}', '{host}', '{$destination}', '{$commit}', '{$branch}', '{$user}', '{$timestamp}');
+      $params = array($server, $project, $host, $destination, $commit, $branch, $user, $timestamp);
 
       // Start output
       $output = "\n\nRunning deploy hooks...\n";
