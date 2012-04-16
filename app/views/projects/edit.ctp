@@ -1,7 +1,9 @@
 <div class="projects form">
 <?php echo $this->Form->create('Project');?>
   <fieldset>
-     <legend><?php __('Edit Project'); ?></legend>
+     <legend><?php 
+     $title = ucfirst(h($this->action));
+     __($title . ' Project'); ?></legend>
   <?php
     echo $this->Form->input('id');
     echo $this->Form->input('name');
