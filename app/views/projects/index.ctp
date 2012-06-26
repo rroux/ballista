@@ -32,7 +32,7 @@ function tog(name, t) {
       $last_tag = $tag;
 ?>
   
-    <h2 id="<?php echo $tag_class; ?>Legend" class="projects plus" onclick="tog('<?php echo $tag_class?>Table', this)"><?php echo $tag ?> Projects</h2>
+    <h2 id="<?php echo $tag_class; ?>Legend" class="projects plus" onclick="tog('<?php echo $tag_class?>Table', this)"><?php echo $tag ?></h2>
     
     <table id="<?php echo $tag_class?>Table" class="collapsed" cellpadding="0" cellspacing="0">
     <tr>
