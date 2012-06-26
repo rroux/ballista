@@ -10,6 +10,9 @@
     echo $this->Form->input('description');
     echo $this->Form->input('host', array('options' => $hosts));
     echo $this->Form->input('path', array('label' => 'Path/URL to the project repository'));
+    
+    echo $this->Form->input('Tag');
+    
     echo $this->Form->input('active');
 
     foreach ($servers as $serverid => $hostname) {

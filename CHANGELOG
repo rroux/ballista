@@ -1,0 +1,8 @@
+Version 1.1 - 26th June
+
+* Timestamp parameter now available to hooks
+* Fixed bug in rollback function
+* Addition of pre-deploy hooks
+* Display correct title in legend on add project page
+* Changed favicon.ico
+* Added tag support to projects

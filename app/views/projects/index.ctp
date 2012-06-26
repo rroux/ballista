@@ -2,26 +2,50 @@
   // Generate the ACL
   $acl = $this->Session->read('User.permissions');
 ?>
+<script type="text/javascript">
+function tog(name, t) {
+  $('#' + name).toggle();
+  $(t).toggleClass('minus');
+}
+</script>
+
 
 <div class="projects index">
-  <h2>Projects</h2>
-  <table cellpadding="0" cellspacing="0">
-  <tr>
-    <th><?php echo $this->Paginator->sort('id');?></th>
-    <th><?php echo $this->Paginator->sort('name');?></th>
-    <th><?php echo $this->Paginator->sort('description');?></th>
-    <th><?php echo $this->Paginator->sort('active');?></th>
-    <th>Activity log</th>
-    <th>Deploy</th>
-    <th>&nbsp;</th>
-  </tr>
   <?php
-    $i = 0;
-    foreach ($projects as $project):
-      $class = null;
-      if ($i++ % 2 == 0) {
-        $class = ' class="altrow"';
-      }
+  $i = 0;
+  $last_tag = null;
+  foreach ($projects as $project):
+    $class = null;
+    if ($i++ % 2 == 0) {
+      $class = ' class="altrow"';
+    }
+    
+    $tag = $project['Tag']['tag'];
+    if (empty($tag)) {
+      $tag = 'Untagged';
+    }
+    $tag_class = str_replace(' ', '', $tag);
+    if ($last_tag !== $tag):
+      if ($last_tag !== ''):
+        echo '</table>';
+      endif;
+      $last_tag = $tag;
+?>
+  
+    <h2 id="<?php echo $tag_class; ?>Legend" class="projects plus" onclick="tog('<?php echo $tag_class?>Table', this)"><?php echo $tag ?> Projects</h2>
+    
+    <table id="<?php echo $tag_class?>Table" class="collapsed" cellpadding="0" cellspacing="0">
+    <tr>
+      <th width="30"><?php echo $this->Paginator->sort('id');?></th>
+      <th width="300"><?php echo $this->Paginator->sort('name');?></th>
+      <th width="400"><?php echo $this->Paginator->sort('description');?></th>
+      <th><?php echo $this->Paginator->sort('active');?></th>
+      <th>Activity log</th>
+      <th>Deploy</th>
+      <th>&nbsp;</th>
+    </tr>
+  <?php
+  endif;
   ?>
   <tr<?php echo $class;?>>
     <td><?php echo $project['Project']['id']; ?>&nbsp;</td>

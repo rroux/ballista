@@ -24,6 +24,7 @@
  * 
  * @copyright     Copyright 2011-2012, Aller Internett AS <it@allerinternett.no>
  * @author        Baheerathan Vykundanathan <thamba@allerinternett.no>
+ * @author        JustAdam <adam.bell@allerinternett.no>
  * @package       Ballista
  * @license       GPL v3 (http://www.gnu.org/licenses/gpl.txt)
  */
@@ -80,6 +81,11 @@ class Project extends AppModel {
       'finderQuery' => '',
       'deleteQuery' => '',
       'insertQuery' => ''
+    ),
+    'Tag' => array(
+      'className' => 'Tag',
+      'joinTable' => 'projects_tags',
+      'foreignKey' => 'project_id'
     )
   );
 

@@ -8,7 +8,7 @@
   <body>
     <h2><a name="Ballista-Setup-CoreentitiesinBallista"></a>Core entities in Ballista</h2>
     
-    <p>Ballista revolves around 4 main entities namely: Project, Server, User and Group.</p>
+    <p>Ballista revolves around 4 main entities namely: Project, Server, User and Group, and an additional 1 named Tags..</p>
     
     <ul>
       <li>Project - This is your git project.</li>
@@ -17,8 +17,15 @@
       <li>Group - A group consists of many users. A user can belong to multiple groups. Each group can be given access or restricted to deploy/rollback on each server.</li>
     </ul>
     
+    <ul>
+      <li>Tag - A label which can be applied to an entity to provide grouping, sorting.</li>
+    </ul>
+   
+    <h4><a name="Ballista-Setup-1.Tags"></a>1. Tags</h4>
+
+    <p>Click on "Add Tag", and enter in a label which will be associated to entities.  Rinse and repeat.</p>
     
-    <h4><a name="Ballista-Setup-1.Projects"></a>1. Projects</h4>
+    <h4><a name="Ballista-Setup-2.Projects"></a>2. Projects</h4>
     
     <p>Click on the "Add project" in the left menu to add a new project. Or click on the edit icon to the right of each project to edit it. These are the fields that need to be filled in:</p>
     <ul>
@@ -27,6 +34,7 @@
       <li>Host - Choose if the project is hosted locally or on Github.</li>
     
       <li>Path to the project repository - This is the local path to the project in your repository or URL to the Github repository. For example: /var/www/git/myapp.git or git@github.com/user/project.git</li>
+      <li>Tag - Labels the project should be grouped and findable under.</li>
       <li>Active - Choose whether or not this project is activated in Ballista. Deactivated projects cannot be deployed or rolled back.</li>
       <li>Path to project instance on Server - This is the path where the project will be deployed to on the server. For example: /var/www/apps/myapp</li>
     </ul>
@@ -46,7 +54,7 @@
     </ul>
     
     
-    <h4><a name="Ballista-Setup-2.Servers"></a>2. Servers</h4>
+    <h4><a name="Ballista-Setup-3.Servers"></a>3. Servers</h4>
     <p>A server is a physical/virtual machine with a resolvable hostname or IP address which Ballista can connect to deploy projects. <br/>
     You can have multiple servers configured with Ballista and you can deploy to all servers with one click or you can choose individual servers for each deploy you perform.</p>
     
@@ -58,7 +66,7 @@
     </ul>
     
     
-    <h4><a name="Ballista-Setup-3.Groups"></a>3. Groups</h4>
+    <h4><a name="Ballista-Setup-4.Groups"></a>4. Groups</h4>
     <p>A group is a categorization of users. This helps to categorize multiple users into different groups. Each group can be assigned permissions to each of your servers. </p>
     
     <p>Add or edit groups by clicking on the "Add group" button on the left menu.</p>
@@ -75,7 +83,7 @@
     </ul>
     
     
-    <h4><a name="Ballista-Setup-4.Users"></a>4. Users</h4>
+    <h4><a name="Ballista-Setup-5.Users"></a>5. Users</h4>
     
     <p>Users are all the people who have access to the Ballista system to use it to deploy projects. <br/>
     Users have to be assigned to one or more groups as it is the group that determines permission to deploy to the servers.</p>
@@ -97,7 +105,7 @@
     
     Clicking on the "green tick" button on the user list display, deactivates a user thereby restricting him from logging into Ballista. Click on the "red stop" icon to reactivate the user. This function is available only to the admin user.</p>
     
-    <h4><a name="Ballista-Setup-5.Managepermissions"></a>5. Manage permissions</h4>
+    <h4><a name="Ballista-Setup-6.Managepermissions"></a>6. Manage permissions</h4>
     <p>Permissions can be managed under this section. This is a display of all the projects and the servers defined in the system. </p>
     
     <p>Add or edit a permission by clicking on the "yellow pencil" icon in the server column and project row.</p>

@@ -546,3 +546,26 @@ input, textarea, select{
 .ui-timepicker-div dl dt{ height: 25px; }
 .ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
+
+
+table.collapsed {
+  display: none;
+}
+
+h2.projects {
+  background: lightsteelblue;
+  font-size: 100%;
+  font-weight: bold;
+  padding: 6px;
+  color: white;
+  cursor: pointer;
+  padding-left: 17px;
+}
+
+.projects.plus {
+  background: lightslategray url(../img/bullet_toggle_plus.png) no-repeat left;
+}
+
+.projects.minus {
+  background: lightslategray url(../img/bullet_toggle_minus.png) no-repeat left;
+}

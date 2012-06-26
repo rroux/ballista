@@ -24,6 +24,7 @@
  *
  * @copyright     Copyright 2011-2012, Aller Internett AS <it@allerinternett.no>
  * @author        Baheerathan Vykundanathan <thamba@allerinternett.no>
+ * @author        JustAdam
  * @package       Ballista
  * @license       GPL v3 (http://www.gnu.org/licenses/gpl.txt)
  */
@@ -66,7 +67,10 @@ class ProjectsController extends AppController {
     // If admin user show all projects, else check for permissions
     if ($this->Session->read('User.admin') == 1) {
       $this->paginate = array(
+        'fields' => array('Project.*, Tag.tag'),
         'order' => array('Project.name' => 'asc'), 
+        'joins' => array('LEFT JOIN projects_tags ProjectsTags on ProjectsTags.project_id = Project.id LEFT JOIN tags Tag on Tag.id = ProjectsTags.tag_id'),
+        'order' => array('Tag.tag' => 'asc', 'Project.name' => 'asc'), 
         'limit' => 100
       );
     } else {
@@ -74,6 +78,8 @@ class ProjectsController extends AppController {
       $this->paginate = array(
         'conditions' => array('Project.id' => $allowed_projects), 
         'order' => array('Project.name' => 'asc'), 
+        'joins' => array('LEFT JOIN projects_tags ProjectsTags on ProjectsTags.project_id = Project.id LEFT JOIN tags Tag on Tag.id = ProjectsTags.tag_id'),
+        'order' => array('Tag.tag' => 'asc', 'Project.name' => 'asc'), 
         'limit' => 100
       );
     }
@@ -96,11 +102,13 @@ class ProjectsController extends AppController {
    *
    * @return  object  $servers  Servers object
    * @return  array   $hosts    Hosts array
+   * @return  array   $tags     Tags array
    */
   function add() {
     // Get list of all servers
     $servers = $this->Project->Server->find('list');
     $hosts = $this->Project->hosts;
+    $tags = $this->Project->Tag->find('list');
 
     if (!empty($this->data)) {
       // Stash away the server info to save only project info first.
@@ -128,7 +136,7 @@ class ProjectsController extends AppController {
       }
     }
 
-    $this->set(compact('servers', 'hosts'));
+    $this->set(compact('servers', 'hosts', 'tags'));
     $this->render('edit');
   }
 
@@ -140,6 +148,7 @@ class ProjectsController extends AppController {
    * @return  object  $servers    Servers object
    * @return  object  $instances  Instances object
    * @return  array   $hosts      Hosts array
+   * @return  array   $tags       Tags array
    */
   function edit($id = null) {
     if (!$id && empty($this->data)) {
@@ -148,6 +157,7 @@ class ProjectsController extends AppController {
     // Get list of all servers
     $servers = $this->Project->Server->find('list');
     $hosts = $this->Project->hosts;
+    $tags = $this->Project->Tag->find('list');
 
     if (empty($this->data)) {
       $this->data = $this->Project->read(null, $id);
@@ -189,7 +199,7 @@ class ProjectsController extends AppController {
         $this->Session->setFlash(__('The project could not be saved. Please, try again.', true));
       }
     }
-    $this->set(compact('servers', 'instances', 'hosts'));
+    $this->set(compact('servers', 'instances', 'hosts', 'tags'));
   }
 
   /**

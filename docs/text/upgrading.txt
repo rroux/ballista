@@ -1,0 +1,9 @@
+Upgrading Ballista to v. 1.1
+------------------------------
+
+1.  Update your codebase to the latest version from Github.
+
+2.  Update your database schema:
+
+    The database schema file can be found under ballista/app/models/datasources/upgrading-v1.1.sql
+    You can execute this code with a command like: mysql ballista -u user -p pass < upgrading-v1.1.sql

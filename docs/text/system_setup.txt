@@ -1,14 +1,20 @@
 Core entities in Ballista
 -------------------------
 
-Ballista revolves around 4 main entities namely: Project, Server, User and Group.
+Ballista revolves around 4 main entities namely: Project, Server, User and Group, and an additional 1 named Tags.
 
     Project - This is your git project.
     Server - This is a server to which you wish to deploy your code to.
     User - A user is a person who has access to the Ballista interface through which he/she can deploy a project to one or more servers.
     Group - A group consists of many users. A user can belong to multiple groups. Each group can be given access or restricted to deploy/rollback on each server.
 
-1. Projects
+    Tag - A label which can be applied to an entity to provide grouping, sorting.
+
+1. Tags
+
+Click on "Add Tag", and enter in a label which will be associated to entities.  Rinse and repeat.
+
+2. Projects
 
 Click on the "Add project" in the left menu to add a new project. Or click on the edit icon to the right of each project to edit it. These are the fields that need to be filled in:
 
@@ -16,6 +22,7 @@ Click on the "Add project" in the left menu to add a new project. Or click on th
     Description - Any short description of your project
     Host - Choose if the project is hosted locally or on Github.
     Path to the project repository - This is the local path to the project in your repository or URL to the Github repository. For example: /var/www/git/myapp.git or git@github.com/user/project.git
+    Tag - Labels the project should be grouped and findable under.
     Active - Choose whether or not this project is activated in Ballista. Deactivated projects cannot be deployed or rolled back.
     Path to project instance on Server - This is the path where the project will be deployed to on the server. For example: /var/www/apps/myapp
 
@@ -30,7 +37,7 @@ The subject of the email is configured in config/settings.php file.
     Email address - Comma separated email addresses to whom notifications need to be sent. This will override notification email address in the config/settings.php file.
     Message - The notification message. This will override notification email address in the config/settings.php file.
 
-2. Servers
+3. Servers
 
 A server is a physical/virtual machine with a resolvable hostname or IP address which Ballista can connect to deploy projects.
 You can have multiple servers configured with Ballista and you can deploy to all servers with one click or you can choose individual servers for each deploy you perform.
@@ -40,7 +47,7 @@ Add or edit servers by clicking on the "Add server" button on the left menu.
     Server name - Use any name to identify the server. This will be seen by the users of the system when they deploy to the server.
     IP/hostname - The IP address or hostname of the server.
 
-3. Groups
+4. Groups
 
 A group is a categorization of users. This helps to categorize multiple users into different groups. Each group can be assigned permissions to each of your servers.
 
@@ -54,7 +61,7 @@ Example scenarios
     You then create 2 groups - "Developers" and "Release Managers"
     Give the "Developers" group permission to deploy to the "Staging" server while, the "Release Managers" group is given permission to deploy to "Staging" and "Production" servers.
 
-4. Users
+5. Users
 
 Users are all the people who have access to the Ballista system to use it to deploy projects.
 Users have to be assigned to one or more groups as it is the group that determines permission to deploy to the servers.
@@ -71,7 +78,8 @@ Add or edit users by clicking on the "Add user" button on the left menu.
 
 Active/Inactive users
 Clicking on the "green tick" button on the user list display, deactivates a user thereby restricting him from logging into Ballista. Click on the "red stop" icon to reactivate the user. This function is available only to the admin user.
-5. Manage permissions
+
+6. Manage permissions
 
 Permissions can be managed under this section. This is a display of all the projects and the servers defined in the system.
 

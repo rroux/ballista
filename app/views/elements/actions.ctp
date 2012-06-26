@@ -104,6 +104,30 @@
         ?>
       </ul>
     </fieldset>
+    
+    <fieldset>
+      <legend>Tags</legend>
+      <ul>
+        <?php
+          echo '<li>';
+          echo $this->Html->link(
+            $this->Html->image('tag_blue.png').' View Tags', 
+            array('controller' => 'tags', 'action' => 'index'),
+            array('escape' => false)
+          );
+          echo '</li>';
+          
+          echo '<li>';
+          echo $this->Html->link(
+            $this->Html->image('tag_blue_add.png').' Add Tag', 
+            array('controller' => 'tags', 'action' => 'add'),
+            array('escape' => false)
+          );
+          echo '</li>';
+        ?>
+      </ul>
+    </fieldset>    
+    
     <?php } ?>
     
     <?php if ($this->Session->read('User.admin')) { ?>
