@@ -9,11 +9,11 @@
     
     <h2><a name="Ballista-Hooks-Hooks"></a>Hooks</h2>
     <p>
-      Ballista executes hook scripts to which you can add custom commands that will be run on the server after a deploy is performed.
+      Ballista executes hook scripts to which you can add custom commands that will be run on the server before and after a deploy is performed.
     </p>
     <h4><a name="Ballista-Hooks-HooksConfiguration"></a>Hooks Configuration</h4>
     <p>
-      The hooks configuration uses the ini file syntax. You can add shell commands here that will be run by the Ballista hooks when deploys are performed. These commands will be run on the server after the action is completed. Below you will find a sample configuration example and further down the explanation of the syntax.
+      The hooks configuration uses the ini file syntax. You can add shell commands here that will be run by the Ballista hooks when deploys are performed. The commands listed in the pre-deploy.ini file will be run on the server before the deploy is performed and the commands listed in post-deploy.ini are run after the deploy is performed. Below you will find a sample configuration example and further down the explanation of the syntax.
     </p>
     <h6><a name="Ballista-Hooks-Availableparameters"></a>Available parameters</h6>
     <p>
@@ -57,7 +57,7 @@
         </tbody>
       </table>
     </div>
-    <h6><a name="Ballista-Hooks-ExampleconfigurationthatcanbeaddedintheDeploy.inifile"></a>Example configuration that can be added in the Deploy.ini file</h6>
+    <h6><a name="Ballista-Hooks-ExampleconfigurationthatcanbeaddedintheDeploy.inifile"></a>Example configuration that can be added in the pre and post-deploy.ini file</h6>
     <div class="preformatted panel" style="border-width: 1px;">
       <div class="preformattedContent panelContent">
         <pre>

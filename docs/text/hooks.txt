@@ -1,10 +1,10 @@
 Hooks
 -----
 
-Ballista executes hook scripts to which you can add custom commands that will be run on the server after a deploy is performed.
+Ballista executes hook scripts to which you can add custom commands that will be run on the server before or after a deploy is performed.
 Hooks Configuration
 
-The hooks configuration uses the ini file syntax. You can add shell commands here that will be run by the Ballista hooks when deploys are performed. These commands will be run on the server after the action is completed. Below you will find a sample configuration example and further down the explanation of the syntax.
+The hooks configuration uses the ini file syntax. You can add shell commands here that will be run by the Ballista hooks when deploys are performed. The commands listed in the pre-deploy.ini will be run on the server before the action is completed, and the commands in the post-deploy.ini will be run after the deploy is performed. Below you will find a sample configuration example and further down the explanation of the syntax.
 Available parameters
 
 The following variables are available for use in the hook commands.
@@ -17,8 +17,8 @@ The following variables are available for use in the hook commands.
 {$user}   Username of the user who performed the deploy/rollback
 {$timestamp} Current timestamp in yyyymmddhhmmss format
 
-Example configuration that can be added in the Deploy.ini file
---------------------------------------------------------------
+Example configuration that can be added in the pre or post-deploy.ini file
+--------------------------------------------------------------------------
 
 ; The global section whose hooks will be run on all deploys on all servers
 [global] 
