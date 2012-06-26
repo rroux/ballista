@@ -36,6 +36,7 @@ class HooksTask extends Shell {
    * Hooks can be setup in the config folder.
    * Read the README file for syntax
    *
+   * @param   string  $type         Pre or post hook execution
    * @param   object  $ssh          The SSH connection handle
    * @param   string  $server       IP/hostname of the server
    * @param   string  $project      Name of the project
@@ -48,21 +49,21 @@ class HooksTask extends Shell {
    *
    * @return  string  $output       Output from the hook execution
    */
-  function execute($ssh = null, $server = null, $project = null, $host = null, $destination = null, $path = null, $commit = 'HEAD', $branch = null, $user = null) {
+  function execute($type = 'pre', $ssh = null, $server = null, $project = null, $host = null, $destination = null, $path = null, $commit = 'HEAD', $branch = null, $user = null) {
     if (!empty($destination)) {
 
-      // Get current timestamp
+      // Get current timestamp in yyyymmddhhmmss
       $timestamp = date('YmdHis');
-
+      
       // Placeholders and their respective parameters that can be substituted in the hook commands
       $holders = array('{$server}', '{$project}', '{host}', '{$destination}', '{$commit}', '{$branch}', '{$user}', '{$timestamp}');
       $params = array($server, $project, $host, $destination, $commit, $branch, $user, $timestamp);
 
       // Start output
-      $output = "\n\nRunning deploy hooks...\n";
+      $output = "Running $type deploy hooks...\n";
 
       // Parse the deploy hook file
-      $hooks = parse_ini_file(ROOT . DS . APP_DIR . DS . 'config/hooks/Deploy.ini', true);
+      $hooks = parse_ini_file(ROOT . DS . APP_DIR . DS . 'config/hooks/' . $type . '_deploy.ini', true);
 
       // Run global hook
       $output .= $this->_runhook($ssh, $holders, $params, $hooks['global']['default']);
@@ -77,11 +78,11 @@ class HooksTask extends Shell {
       $output .= $this->_runhook($ssh, $holders, $params, $hooks[$server][$project][$branch]);
 
       // End output and return
-      $output .= "\nHooks execution completed.";
+      $output .= "$type deploy hooks execution completed.";
       return $output;
 
     } else {
-      return "Error: Undefined path. Cannot run hooks.\n";
+      return "Error: Undefined path. Cannot run $type hooks.\n";
     }
   }
 

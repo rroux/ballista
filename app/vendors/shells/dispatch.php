@@ -76,8 +76,23 @@ class DispatchShell extends Shell {
         // Obtain an SSH connection to the server
         $ssh = $this->_connector($val['Instance']['Server']['hostname']);
 
+	// Run the pre hooks
+        $output = $this->Hooks->execute(
+          'pre',     
+          $ssh, 
+          $val['Instance']['Server']['server'], 
+          $val['Instance']['Project']['name'], 
+          $val['Instance']['Project']['host'], 
+          $destination, 
+          $val['Instance']['Project']['path'], 
+          $val['Log']['commit'], 
+          $branch, 
+          $val['User']['username']
+        );
+	$output .= "\n\n";
+
         // Execute the coderunner
-        $output = $this->Coderunner->execute(
+        $output .= $this->Coderunner->execute(
           $ssh, 
           $val['Instance']['Project']['name'], 
           $val['Instance']['Project']['host'], 
@@ -86,6 +101,7 @@ class DispatchShell extends Shell {
           $val['Log']['commit'], 
           $branch
         );
+	$output .= "\n\n";
 
         // Set the status and run hooks
         if (strpos($output, 'Error:') !== false || strpos($output, 'fatal:') !== false) {
@@ -93,6 +109,7 @@ class DispatchShell extends Shell {
         } else {
           $status = 'Completed';
           $output .= $this->Hooks->execute(
+	    'post', 	
             $ssh, 
             $val['Instance']['Server']['server'], 
             $val['Instance']['Project']['name'], 
