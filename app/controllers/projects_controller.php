@@ -24,7 +24,7 @@
  *
  * @copyright     Copyright 2011-2012, Aller Internett AS <it@allerinternett.no>
  * @author        Baheerathan Vykundanathan <thamba@allerinternett.no>
- * @author        JustAdam
+ * @author        JustAdam <adam.bell@allerinternett.no>
  * @package       Ballista
  * @license       GPL v3 (http://www.gnu.org/licenses/gpl.txt)
  */
@@ -76,6 +76,7 @@ class ProjectsController extends AppController {
     } else {
       $allowed_projects = array_keys($this->Session->read('User.permissions'));
       $this->paginate = array(
+        'fields' => array('Project.*, Tag.tag'),
         'conditions' => array('Project.id' => $allowed_projects), 
         'order' => array('Project.name' => 'asc'), 
         'joins' => array('LEFT JOIN projects_tags ProjectsTags on ProjectsTags.project_id = Project.id LEFT JOIN tags Tag on Tag.id = ProjectsTags.tag_id'),
